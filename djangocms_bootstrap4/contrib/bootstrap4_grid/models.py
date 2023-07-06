@@ -80,7 +80,7 @@ class Bootstrap4GridRow(CMSPlugin):
 
     def get_short_description(self):
         column_count = len(self.child_plugin_instances or [])
-        column_count_str = ungettext(
+        column_count_str = ngettext(
             '(1 column)',
             '(%(count)i columns)',
             column_count
