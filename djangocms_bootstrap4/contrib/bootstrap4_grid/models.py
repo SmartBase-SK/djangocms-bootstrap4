@@ -8,7 +8,7 @@ from cms.models import CMSPlugin
 
 from djangocms_bootstrap4.constants import DEVICE_SIZES
 from djangocms_bootstrap4.fields import AttributesField, IntegerRangeField, TagTypeField
-from djangocms_bootstrap4.helpers import get_choices_match, get_first_choice, mark_safe_lazy
+from djangocms_bootstrap4.helpers import get_choices_match, get_first_choice
 
 from .constants import (
     GRID_COLUMN_ALIGNMENT_CHOICES, GRID_COLUMN_CHOICES, GRID_CONTAINER_CHOICES, GRID_ROW_HORIZONTAL_ALIGNMENT_CHOICES,
@@ -26,10 +26,10 @@ class Bootstrap4GridContainer(CMSPlugin):
         choices=GRID_CONTAINER_CHOICES,
         default=get_first_choice(GRID_CONTAINER_CHOICES),
         max_length=255,
-        help_text=mark_safe_lazy(_(
+        help_text=_(
             'Defines if the grid should use fixed width (<code>.container</code>) '
             'or fluid width (<code>.container-fluid</code>).'
-        )),
+        ),
     )
     tag_type = TagTypeField()
     attributes = AttributesField()
@@ -52,20 +52,18 @@ class Bootstrap4GridRow(CMSPlugin):
         choices=GRID_ROW_VERTICAL_ALIGNMENT_CHOICES,
         blank=True,
         max_length=255,
-        help_text=mark_safe_lazy(_(
+        help_text=_(
             'Read more in the <a href="{link}" target="_blank">documentation</a>.')
-                .format(link='https://getbootstrap.com/docs/4.0/layout/grid/#vertical-alignment')
-        ),
+                .format(link='https://getbootstrap.com/docs/4.0/layout/grid/#vertical-alignment'),
     )
     horizontal_alignment = models.CharField(
         verbose_name=_('Horizontal alignment'),
         choices=GRID_ROW_HORIZONTAL_ALIGNMENT_CHOICES,
         blank=True,
         max_length=255,
-        help_text=mark_safe_lazy(_(
+        help_text=_(
             'Read more in the <a href="{link}" target="_blank">documentation</a>.')
-                .format(link='https://getbootstrap.com/docs/4.0/layout/grid/#horizontal-alignment')
-        ),
+                .format(link='https://getbootstrap.com/docs/4.0/layout/grid/#horizontal-alignment'),
     )
     gutters = models.BooleanField(
         verbose_name=_('Remove gutters'),
